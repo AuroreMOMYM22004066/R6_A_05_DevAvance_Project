@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Hello HomeController !{% endblock %}
 
 {% block body %}
     {% if is_logged_in %}
-        <h1>Bonjour, {{ user.username }}!</h1> {# Affiche le nom de l'utilisateur connecté #}
+        <h1>Hello, {{ user.username }}!</h1> {# Affiche le nom de l'utilisateur connecté #}
         <a href="{{ path('app_logout') }}">Logout</a>
     {% else %}
-        <h1>Bienvenue sur notre site!</h1>
-        <p>Vous devez être connecté pour accéder à cette section. Veuillez vous connecter ou vous inscrire.</p>
-        <a href="{{ path('app_login') }}">Se connecter</a> <br>
-        <a href="{{ path('app_register') }}">S'inscrire</a> {# Lien vers la page d'inscription #}
+        <h1>Welcome in my site !</h1>
+        <p>You must be logged in to access this section. Please login or register.</p>
+        <a href="{{ path('app_login') }}">Sign in</a> <br>
+        <a href="{{ path('app_register') }}">Sign up</a>
     {% endif %}
 {% endblock %}
