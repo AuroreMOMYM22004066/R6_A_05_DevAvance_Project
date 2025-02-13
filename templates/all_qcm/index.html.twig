@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AllQcmController!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/allQcm_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>Liste des QCMs</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Thème</th>
+                <th>Langue</th>
+                <th>Détails</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for qcm in qcms %}
+                <tr>
+                    <td>{{ qcm.id }}</td>
+                    <td>{{ qcm.theme }}</td>
+                    <td>{{ qcm.lang }}</td>
+                    <td><a href="{{ path('app_qcm_show', {'id': qcm.id}) }}">Voir le QCM</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun QCM trouvé</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

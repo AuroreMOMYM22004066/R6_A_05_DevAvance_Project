@@ -2,6 +2,11 @@
 
 {% block title %}Register{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/register_style.css') }}">
+{% endblock %}
+
 {% block body %}
     <h1>Register</h1>
 
@@ -22,5 +27,4 @@
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
     <a href="{{ path('app_login') }}">I have an account</a> <br>
-    <a href="{{ path('app_home') }}">Home</a> <br>
 {% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QcmDetailController!{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/qcmDetail_style.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1>{{ qcm.theme }} - Question {{ questionIndex + 1 }} / {{ qcm.questions|length }}</h1>
+
+    <form action="{{ path('app_qcm_show', {'id': qcm.id, 'questionIndex': questionIndex}) }}" method="post">
+        <h2>{{ question.text}}</h2>
+
+        {# Affichage des réponses possibles #}
+        {% for choice in choices %}
+            <label>
+                <input type="radio" name="answer" value="{{ choice.id }}" required>
+                {{ choice.text }}
+            </label><br>
+        {% endfor %}
+
+        <input type="hidden" name="score" value="{{ score }}">
+        <button type="submit">Valider</button>
+    </form>
+{% endblock %}

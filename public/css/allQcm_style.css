@@ -1,0 +1,59 @@
+/* Styles pour le tableau */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour l'en-tête du tableau */
+thead {
+    background-color: #007BFF;
+    color: white;
+    text-align: left;
+}
+
+thead th {
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* Styles pour les lignes du tableau */
+tbody tr {
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styles pour les cellules du tableau */
+td {
+    padding: 12px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Style pour le lien Voir le QCM */
+td a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+td a:hover {
+    color: #0056b3;
+}
+
+/* Message Aucun QCM trouvé */
+td[colspan="4"] {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+    padding: 20px;
+}

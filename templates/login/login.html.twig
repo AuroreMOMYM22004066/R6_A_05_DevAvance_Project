@@ -2,6 +2,11 @@
 
 {% block title %}Log in!{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login_style.css') }}">
+{% endblock %}
+
 {% block body %}
     <form method="post">
         {% if error %}
@@ -39,6 +44,4 @@
         </button>
     </form>
     <a href="{{ path('app_register') }}">Sign up</a> <br>
-    <a href="{{ path('app_home') }}">Home</a> <br>
-
 {% endblock %}

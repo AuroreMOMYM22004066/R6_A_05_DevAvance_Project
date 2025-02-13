@@ -4,13 +4,46 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
         {% block stylesheets %}
+            <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% endblock %}
-
-        {% block javascripts %}
-        {% endblock %}
+        {% block javascripts %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            <nav class="navbar">
+                <a href="{{ path('app_home') }}">Home</a>
+                <a href="{{ path('app_all_qcm') }}">QCM</a>
+                <form action="{{ path('app_home') }}" method="get">
+                    <img id="flagImage" src="{{ api_flag_url }}{{ flagCodes[0].link }}" style="width: 20px; height: 20px;">
+
+                    <select name="language" id="language" onchange="updateFlag()">
+                        {% for flag in flagCodes %}
+                            <option value="{{ flag.code }}" data-flag="{{ flag.link }}">
+                                {{ flag.language }}
+                            </option>
+                        {% endfor %}
+                    </select>
+
+                </form>
+                <a href="{{ path('app_login') }}">Sign in</a>
+                <a href="{{ path('app_register') }}">Sign up</a>
+            </nav>
+        </header>
+
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        <script>
+            const API_FLAG_URL = "{{ api_flag_url }}";
+            function updateFlag() {
+                var select = document.getElementById("language");
+                var selectedOption = select.options[select.selectedIndex];
+                var flagUrl = API_FLAG_URL + selectedOption.getAttribute("data-flag");
+
+                document.getElementById("flagImage").src = flagUrl;
+            }
+        </script>
     </body>
 </html>
